@@ -9,7 +9,7 @@ export default function ImageCard({ image, onClick, index }) {
     const handleDownload = (e) => {
         e.stopPropagation();
         const link = document.createElement('a');
-        link.href = image.path;
+        link.href = import.meta.env.BASE_URL + image.path.substring(1);
         link.download = image.name;
         document.body.appendChild(link);
         link.click();
@@ -33,7 +33,7 @@ export default function ImageCard({ image, onClick, index }) {
 
             {/* Image */}
             <img
-                src={image.path}
+                src={import.meta.env.BASE_URL + image.path.substring(1)}
                 alt={image.name}
                 loading="lazy"
                 onLoad={() => setIsLoaded(true)}
@@ -75,3 +75,4 @@ export default function ImageCard({ image, onClick, index }) {
         </motion.div>
     );
 }
+

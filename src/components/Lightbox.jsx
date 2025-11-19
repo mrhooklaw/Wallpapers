@@ -21,7 +21,7 @@ export default function Lightbox({ image, onClose, onNext, onPrev, hasNext, hasP
 
     const handleDownload = () => {
         const link = document.createElement('a');
-        link.href = image.path;
+        link.href = import.meta.env.BASE_URL + image.path.substring(1);
         link.download = image.name;
         document.body.appendChild(link);
         link.click();
@@ -95,7 +95,7 @@ export default function Lightbox({ image, onClose, onNext, onPrev, hasNext, hasP
                 onClick={(e) => e.stopPropagation()}
             >
                 <img
-                    src={image.path}
+                    src={import.meta.env.BASE_URL + image.path.substring(1)}
                     alt={image.name}
                     className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
                 />
