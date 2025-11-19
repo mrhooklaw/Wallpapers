@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Layout from './components/Layout';
 import Gallery from './components/Gallery';
 import Lightbox from './components/Lightbox';
@@ -29,22 +30,24 @@ function App() {
   };
 
   return (
-    <Layout wallpaperCount={wallpapersData.length}>
-      <Gallery images={wallpapersData} onImageClick={handleImageClick} />
+    <ThemeProvider>
+      <Layout wallpaperCount={wallpapersData.length}>
+        <Gallery images={wallpapersData} onImageClick={handleImageClick} />
 
-      <AnimatePresence>
-        {selectedImageIndex !== null && (
-          <Lightbox
-            image={wallpapersData[selectedImageIndex]}
-            onClose={handleClose}
-            onNext={handleNext}
-            onPrev={handlePrev}
-            hasNext={selectedImageIndex < wallpapersData.length - 1}
-            hasPrev={selectedImageIndex > 0}
-          />
-        )}
-      </AnimatePresence>
-    </Layout>
+        <AnimatePresence>
+          {selectedImageIndex !== null && (
+            <Lightbox
+              image={wallpapersData[selectedImageIndex]}
+              onClose={handleClose}
+              onNext={handleNext}
+              onPrev={handlePrev}
+              hasNext={selectedImageIndex < wallpapersData.length - 1}
+              hasPrev={selectedImageIndex > 0}
+            />
+          )}
+        </AnimatePresence>
+      </Layout>
+    </ThemeProvider>
   );
 }
 

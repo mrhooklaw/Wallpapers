@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Github } from 'lucide-react';
+import ThemeSwitch from './ThemeSwitch';
 
 export default function Layout({ children, wallpaperCount }) {
     return (
@@ -29,15 +30,19 @@ export default function Layout({ children, wallpaperCount }) {
                             </div>
                         </div>
 
-                        <a
-                            href="https://github.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 glass-effect rounded-xl hover:bg-white/10 transition-all duration-300 group"
-                            aria-label="GitHub"
-                        >
-                            <Github className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-                        </a>
+                        <div className="flex items-center gap-3">
+                            <ThemeSwitch />
+
+                            <a
+                                href="https://github.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-3 glass-effect rounded-xl hover:bg-white/10 transition-all duration-300 group"
+                                aria-label="GitHub"
+                            >
+                                <Github className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </motion.header>
