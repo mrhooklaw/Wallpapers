@@ -57,13 +57,31 @@ export const themes = {
             body: "'VT323', monospace",
         },
     },
+    modern: {
+        id: 'modern',
+        name: 'Modern Elegance',
+        icon: '✨',
+        colors: {
+            primary: '#007aff',
+            secondary: '#5856d6',
+            accent: '#ff375f',
+            background: '#f5f5f7',
+            surface: '#ffffff',
+            text: '#1d1d1f',
+            textMuted: '#86868b',
+        },
+        fonts: {
+            heading: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            body: "'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        },
+    },
 };
 
 export function ThemeProvider({ children }) {
     const [currentTheme, setCurrentTheme] = useState(() => {
-        // Load theme from localStorage or default to cyberpunk
+        // Load theme from localStorage or default to modern
         const saved = localStorage.getItem('wallpaper-theme');
-        return saved && themes[saved] ? saved : 'cyberpunk';
+        return saved && themes[saved] ? saved : 'modern';
     });
 
     useEffect(() => {
